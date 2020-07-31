@@ -21,6 +21,7 @@ dev: start seed
 .PHONY: start
 start: ## Lance le serveur de développement
 	$(DOCKER_COMPOSE) up -d --remove-orphans --build
+	yarn dev-server
 
 
 .PHONY: down

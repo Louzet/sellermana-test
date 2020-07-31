@@ -1,0 +1,40 @@
+{% extends 'base.html.twig'%}
+
+{% block htmlBlockTitle %}
+    {% block htmlTitle %}{% endblock %} | SellerMania
+{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block bodyBase %}
+    {# {% include "header.html.twig" %} #}
+    {% include "sidebar.html.twig" %}
+    <div class="content-wrapper">
+        {% if 'login' not in app.request.headers.get('') %}
+            <div>
+                <ol class="breadcrumb breadcrumb-back">
+                    <li>
+                        <a href="{{ app.request.headers.get('referer') }}">
+                            <span class="glyphicon glyphicon-chevron-left"></span> {{ 'common.back' | trans | title }}
+                        </a>
+                    </li>
+                </ol>
+            </div>
+        {% endif %}
+        <section class="content__header">
+            <h1>{% block title %}{% endblock %}</h1>
+            <div class="content__subtitle">
+                {% block subTitle %}{% endblock %}
+            </div>
+        </section>
+        <section class="content">
+            {% block body %}{% endblock %}
+        </section>
+    </div>
+{% endblock %}
+
+{% block javascript %}
+    <script>
+        $('.sidebar__menu').tree();
+    </script>
+{% endblock %}

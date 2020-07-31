@@ -1,0 +1,6 @@
+common:
+    back: "retour"
+    sign-in: "Connexion"
+
+nav:
+    home: "accueil"

@@ -1,0 +1,6 @@
+common:
+    back: "back"
+    sign-in: "sign-in"
+
+nav:
+    home: "home"
