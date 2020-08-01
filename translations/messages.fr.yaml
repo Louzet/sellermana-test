@@ -1,6 +1,17 @@
 common:
+    home: "accueil"
     back: "retour"
     sign-in: "Connexion"
 
-nav:
-    home: "accueil"
+game:
+    common: "jeu"
+    plural: "Jeux"
+    create: "créer"
+    list: "liste de jeux"
+    creation: "creation"
+    flash:
+        created: "Votre jeu a été crée avec success !"
+    name: "Jeu"
+    price: "prix"
+    description: "description"
+    state: "état"

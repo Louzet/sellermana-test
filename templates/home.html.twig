@@ -1,6 +1,8 @@
 {% extends 'template.html.twig' %}
 
-{% block title %}Hello !{% endblock %}
+{% block htmlTitle %}
+    {{ 'common.home' | trans | capitalize }} {{ parent() }}
+{% endblock %}
 
 {% block body %}
 

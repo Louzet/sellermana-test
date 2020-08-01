@@ -1,9 +1,9 @@
 @import './bootstrap.min.css';
 
 body {
-    background-color: white;
-    margin: 0px;
-    padding: 0px;
+  background-color: white;
+  margin: 0px;
+  padding: 0px;
 }
 
 .nav-side-menu {
@@ -146,4 +146,15 @@ body {
   .nav-side-menu .menu-list .menu-content {
     display: block;
   }
+}
+
+/* page game create */
+
+.form-game-creation {
+  border: 1px solid #0808087e;
+  border-radius: 5%;
+}
+
+.btn-primary {
+  border-radius: 8%;
 }
