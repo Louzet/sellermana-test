@@ -1,31 +1,25 @@
 {% extends 'template.html.twig' %}
 
 {% block htmlTitle %}
-    {{ 'game.list' | trans | capitalize }} {{ parent() }}
+    {{ 'concurrent.list' | trans | capitalize }} {{ parent() }}
 {% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-md-8 offset-md-2">
-                <h3 class="text-center">{{ 'game.list' | trans | title }}</h3>
+                <h3 class="text-center">{{ 'concurrent.list' | trans | title }}</h3>
 
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                            <th scope="col">{{ 'game.name' | trans }}</th>
-                            <th scope="col">{{ 'game.price' | trans }}</th>
-                            <th scope="col">{{ 'game.state' | trans }}</th>
                             <th scope="col">{{ 'concurrent.name' | trans }}</th>
                         </tr>
                     </thead>
                     <tbody>
-                        {% for game in games %}
+                        {% for concurrent in concurrents %}
                             <tr class="table-secondary">
-                                <td>{{ game.name }}</td>
-                                <td>{{ game.price }}</td>
-                                <td>{{ game.state }}</td>
-                                <td>{{ game.concurrent.name }}</td>
+                                <td>{{ concurrent.name }}</td>
                             </tr>
                         {% endfor %}
                     </tbody>

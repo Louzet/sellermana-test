@@ -23,10 +23,26 @@
         </li>
         <ul class="sub-menu collapse" id="games">
           <li class="nav-link">
-            <a href="{{ path('game.create') }}" class="nav-item">{{ 'game.create' | trans }}</a>
+            <a href="{{ path('game.create') }}" class="nav-item">{{ 'common.create' | trans }}</a>
           </li>
           <li class="nav-link">
-            <a href="{{ path('game.list') }}" class="nav-item">{{ 'game.list' | trans }}</a>
+            <a href="{{ path('game.list') }}" class="nav-item">{{ 'common.list' | trans }}</a>
+          </li>
+        </ul>
+
+        {# concurrents #}
+        <li data-toggle="collapse" data-target="#concurrents" class="collapsed">
+          <a class="nav-link" href="#">
+            <i class="fa fa-building fa-md"></i> {{ 'concurrent.plural' | trans }}
+            <span class="arrow"></span>
+          </a>
+        </li>
+        <ul class="sub-menu collapse" id="concurrents">
+          <li class="nav-link">
+            <a href="{{ path('concurrent.create') }}" class="nav-item">{{ 'common.create' | trans }}</a>
+          </li>
+          <li class="nav-link">
+            <a href="{{ path('concurrent.list') }}" class="nav-item">{{ 'common.list' | trans }}</a>
           </li>
         </ul>
 

@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Form;
+namespace App\Form\Game;
 
 use App\Entity\Game;
 use App\Entity\State;
+use App\Entity\Concurrent;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -30,12 +31,22 @@ class GameCreationType extends AbstractType
 
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
+        $concurrents = $this->em->getRepository(Concurrent::class)->findAll();
+
         $builder
             ->add('name', TextType::class, [
                 'required' => true,
                 'attr' => [
                     'class' => 'form-control'
                 ]
+            ])
+            ->add('concurrent', ChoiceType::class, [
+                'required' => true,
+                'choices' => $concurrents,
+                'choice_label' => function (Concurrent $concurrent) {
+                    return $concurrent ? $concurrent->getName() : '';
+                },
+                'attr' => ['class' => 'form-control']
             ])
             ->add('price', HiddenType::class, [
                 'required' => false,

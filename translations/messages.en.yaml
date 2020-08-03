@@ -2,12 +2,14 @@ common:
     home: "home"
     back: "back"
     sign-in: "sign-in"
+    create: "create"
+    creation: "creation"
+    list: "list"
 
 game:
     common: "game"
     plural: "games"
-    create: "create"
-    list: "list"
+    list: "list of games"
     creation: "creation"
     flash:
         created: "Your game was created successfully !"
@@ -16,3 +18,10 @@ game:
     description: "description"
     state: "state"
 
+concurrent:
+    common: "concurrent"
+    plural: "concurrents"
+    list: "list of concurrents"
+    name: "concurrent's name"
+    flash:
+        created: "The concurrent was created successfully !"

@@ -2,12 +2,14 @@ common:
     home: "accueil"
     back: "retour"
     sign-in: "Connexion"
+    create: "créer"
+    creation: "creation"
+    list: "liste"
 
 game:
     common: "jeu"
     plural: "Jeux"
-    create: "créer"
-    list: "liste de jeux"
+    list: "liste des jeux"
     creation: "creation"
     flash:
         created: "Votre jeu a été crée avec success !"
@@ -15,3 +17,11 @@ game:
     price: "prix"
     description: "description"
     state: "état"
+
+concurrent:
+    common: "concurrent"
+    plural: "concurrents"
+    list: "liste des concurrents"
+    name: "nom du concurrent"
+    flash:
+        created: "Le concurrent a été crée avec success !"

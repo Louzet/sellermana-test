@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Game;
-use App\Form\GameCreationType;
+use App\Form\Game\GameCreationType;
 use App\Repository\GameRepository;
 use App\Event\Game\GameCreationEvent;
 use Doctrine\ORM\EntityManagerInterface;

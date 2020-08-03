@@ -14,9 +14,8 @@ use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 class Game
 {
     public const CENTIME = 0.01;
-
     public const EURO = 1;
-    
+
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -54,6 +53,11 @@ class Game
      * @ORM\Column(type="text", nullable=true)
      */
     private string $description;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Concurrent::class, inversedBy="games")
+     */
+    private $concurrent;
 
     public function getId(): ?int
     {
@@ -128,6 +132,18 @@ class Game
     public function setDescription(?string $description): self
     {
         $this->description = $description;
+
+        return $this;
+    }
+
+    public function getConcurrent(): ?Concurrent
+    {
+        return $this->concurrent;
+    }
+
+    public function setConcurrent(?Concurrent $concurrent): self
+    {
+        $this->concurrent = $concurrent;
 
         return $this;
     }
