@@ -5,12 +5,18 @@ namespace App\Entity;
 use App\Entity\State;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\GameRepository;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 /**
  * @ORM\Entity(repositoryClass=GameRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Game
 {
+    public const CENTIME = 0.01;
+
+    public const EURO = 1;
+    
     /**
      * @ORM\Id()
      * @ORM\GeneratedValue()
@@ -27,6 +33,16 @@ class Game
      * @ORM\Column(type="float", nullable=true)
      */
     private float $price;
+
+    /**
+     * @ORM\Column(type="float", nullable=false)
+     */
+    private float $floorPrice;
+
+    /**
+     * @ORM\Column(type="float", nullable=false)
+     */
+    private float $maxPrice;
 
     /**
      * @ORM\ManyToOne(targetEntity=State::class, inversedBy="games", cascade={"persist"})
@@ -64,6 +80,30 @@ class Game
     public function setPrice(?float $price): self
     {
         $this->price = $price;
+
+        return $this;
+    }
+
+    public function getFloorPrice(): float
+    {
+        return $this->floorPrice;
+    }
+
+    public function setFloorPrice(?float $floorPrice): self
+    {
+        $this->floorPrice = $floorPrice;
+
+        return $this;
+    }
+
+    public function getMaxPrice(): float
+    {
+        return $this->maxPrice;
+    }
+
+    public function setMaxPrice(?float $maxPrice): self
+    {
+        $this->maxPrice = $maxPrice;
 
         return $this;
     }

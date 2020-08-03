@@ -11,6 +11,7 @@ use App\Form\DataTransformer\StateToStringTransformer;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\HiddenType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\Extension\Core\Type\TextareaType;
@@ -36,18 +37,28 @@ class GameCreationType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('price', NumberType::class, [
+            ->add('price', HiddenType::class, [
+                'required' => false,
+                'empty_data' => 0,
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('floorPrice', NumberType::class, [
                 'required' => true,
                 'empty_data' => 0,
                 'attr' => ['class' => 'form-control']
             ])
-            ->add('description', TextareaType::class, [
-                'required' => false,
+            ->add('maxPrice', NumberType::class, [
+                'required' => true,
+                'empty_data' => 0,
                 'attr' => ['class' => 'form-control']
             ])
             ->add('state', ChoiceType::class, [
                 'required' => true,
                 'choices' => State::$states,
+                'attr' => ['class' => 'form-control']
+            ])
+            ->add('description', TextareaType::class, [
+                'required' => false,
                 'attr' => ['class' => 'form-control']
             ])
             ->add('submit', SubmitType::class, [

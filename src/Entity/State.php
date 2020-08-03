@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use App\Repository\StateRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * @ORM\Entity(repositoryClass=StateRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class State
 {
@@ -24,20 +26,33 @@ class State
     public const STATE_NORMAL    = "Bon état";
     public const STATE_GOOD      = "Très bon état";
     public const STATE_VERY_GOOD = "Comme neuf";
-    public const STATE_NEW   = "Neuf";
+    public const STATE_NEW       = "Neuf";
 
     public static $states = [
         self::STATE_MEDIUM => "Etat moyen",
-        self::STATE_NORMAL => "Bone état",
+        self::STATE_NORMAL => "Bon état",
         self::STATE_GOOD => "Très bon état",
         self::STATE_VERY_GOOD => "Comme neuf",
-        self::STATE_NEW => "neuf",
+        self::STATE_NEW => "Neuf",
+    ];
+
+    public static $statesOrder = [
+        self::STATE_MEDIUM => 1,
+        self::STATE_NORMAL => 2,
+        self::STATE_GOOD => 3,
+        self::STATE_VERY_GOOD => 4,
+        self::STATE_NEW => 5,
     ];
 
     /**
      * @ORM\Column(type="string", length=255)
      */
     private string $currentState = self::STATE_GOOD;
+
+    /**
+     * @ORM\Column(type="integer", nullable=false)
+     */
+    private int $priority = 3;
 
     /**
      * @ORM\OneToMany(targetEntity=Game::class, mappedBy="state")
@@ -62,6 +77,26 @@ class State
     public function setCurrentState(string $state)
     {
         $this->currentState = $state;
+
+        return $this;
+    }
+
+    public function getPriority() : int
+    {
+        return $this->priority;
+    }
+
+    /**
+     * @ORM\PrePersist()
+     */
+    private function setPriority(int $priority)
+    {
+        if (!\in_array($priority, self::$statesOrder)) {
+            throw new \Exception("Invalid state ! Cannot provide a valid priority");
+        }
+
+        //$this->priority = self::$statesOrder[$this->getCurrentState()];
+        $this->priority = $priority;
 
         return $this;
     }
