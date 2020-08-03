@@ -5,6 +5,8 @@ common:
     create: "créer"
     creation: "creation"
     list: "liste"
+    account: "compte"
+    logout: "déconnexion"
 
 game:
     common: "jeu"
